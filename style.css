@@ -1,36 +1,75 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap");
+
+/* General Styles */
 body {
-  font-family: "Times New Roman", serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 1280px;
-  background-color: #fdf5e6; /* Old paper color */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
+  background-color: #fdf5e6; /* Old paper color */
   text-align: center;
 }
 
 header {
-  margin: 5px 0;
+  position: relative;
   width: 100%;
-  background-color: purple;
-  color: #fff;
-  padding: 20px;
-  font-size: 1.5rem;
+  height: 100vh;
 }
 
-header h1 {
+.hero {
+  background-image: url("/assets/lorena.webp");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+  padding: 50px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 40rem;
+}
+
+.overlay h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4rem;
   margin: 0;
-  font-size: 3rem;
 }
 
-header p {
-  margin: 5px 0;
+.overlay p {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  color: white;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: #4ecdc4;
 }
 
 section {
   padding: 20px;
   margin: 20px auto;
   width: 100%;
+  max-width: 1000px;
   background-color: #f9f4e1;
-  /* border: 1px solid #e0c087; */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
@@ -40,41 +79,17 @@ h2 {
   color: #333;
 }
 
-.job h3 {
-  font-size: 1.5rem;
-  margin-top: 10px;
-  color: #555;
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 2.5rem;
+  }
 
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  text-align: left;
-}
+  .overlay p {
+    font-size: 1.2rem;
+  }
 
-.summary,
-.experienc,
-.education {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-body,
-section,
-header {
-  background-image: url("scroll-background.png"); /* Old scroll background image */
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-section,
-header {
-  border-radius: 15px;
-  font-size: 1.5rem;
+  .btn {
+    font-size: 0.9rem;
+  }
 }
