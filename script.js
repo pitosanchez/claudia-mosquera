@@ -1,177 +1,159 @@
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Create master timeline for page load
 const masterTimeline = gsap.timeline();
 
-// Function to get animation values based on screen size
-const getResponsiveValues = () => {
-    const width = window.innerWidth;
+// Get responsive values based on screen size
+function getResponsiveValues() {
+    const isMobile = window.innerWidth < 576;
     return {
-        signature: {
-            duration: width < 576 ? 2 : 3,
-            scale: width < 576 ? 0.9 : 0.8,
-            strokeWidth: width < 576 ? 3 : 4
-        },
-        profile: {
-            scale: width < 576 ? 0.9 : 0.8,
-            duration: width < 576 ? 1 : 1.2
-        },
-        text: {
-            y: width < 576 ? 20 : 30,
-            duration: width < 576 ? 0.6 : 0.8
-        },
-        button: {
-            y: width < 576 ? 15 : 20,
-            duration: width < 576 ? 0.4 : 0.6
-        }
+        duration: isMobile ? 0.8 : 1.2,
+        scale: isMobile ? 0.9 : 1,
+        y: isMobile ? 20 : 30,
+        stagger: isMobile ? 0.1 : 0.15,
     };
-};
-
-// Signature animation timeline
-const signatureTimeline = gsap.timeline({
-    defaults: { ease: "power2.inOut" }
-});
-
-// Animate signature
-const animateSignature = () => {
-    const values = getResponsiveValues();
-    signatureTimeline
-        .set(".signature", { opacity: 1 })
-        .fromTo(".signature-path",
-            {
-                strokeDashoffset: 2000,
-                scale: values.signature.scale,
-                opacity: 0.5
-            },
-            {
-                strokeDashoffset: 0,
-                scale: 1,
-                opacity: 1,
-                duration: values.signature.duration,
-                ease: "power2.inOut"
-            }
-        )
-        .to(".signature-path", {
-            strokeWidth: values.signature.strokeWidth,
-            duration: 0.5,
-            ease: "elastic.out(1, 0.3)"
-        });
-};
-
-// Hero section animations
-const heroTimeline = gsap.timeline();
+}
 
 // Animate hero section
-const animateHero = () => {
+function animateHero() {
     const values = getResponsiveValues();
+
+    const heroTimeline = gsap.timeline();
+
     heroTimeline
         .from(".profile-container", {
-            scale: values.profile.scale,
+            duration: values.duration,
+            scale: 0.8,
             opacity: 0,
-            duration: values.profile.duration,
-            ease: "power3.out"
+            ease: "power3.out",
         })
-        .add(signatureTimeline, "-=0.5")
+        .from(".overlay", {
+            duration: values.duration,
+            y: values.y,
+            opacity: 0,
+            ease: "power3.out",
+        }, "-=0.6")
         .from(".animate-text", {
-            y: values.text.y,
+            duration: values.duration * 0.8,
+            y: values.y,
             opacity: 0,
-            duration: values.text.duration,
-            stagger: 0.3,
-            ease: "power3.out"
-        }, "-=1.5")
+            stagger: values.stagger,
+            ease: "power3.out",
+        }, "-=0.4")
         .from(".animate-btn", {
-            y: values.button.y,
+            duration: values.duration * 0.8,
+            y: values.y,
             opacity: 0,
-            duration: values.button.duration,
-            stagger: 0.15,
-            ease: "power3.out"
+            stagger: values.stagger,
+            ease: "power3.out",
         }, "-=0.4");
-};
+
+    return heroTimeline;
+}
 
 // Initialize animations
-const initAnimations = () => {
-    // Clear existing timelines
-    masterTimeline.clear();
-    signatureTimeline.clear();
-    heroTimeline.clear();
+function initAnimations() {
+    // Clear any existing ScrollTriggers
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
-    // Create new animations
-    animateSignature();
-    animateHero();
-    masterTimeline.add(heroTimeline);
-
-    // Set initial states for sections
-    gsap.set('.animate-section', {
-        opacity: 0,
-        y: 50
-    });
-
-    gsap.set('.animate-job', {
-        opacity: 0,
-        x: -30
-    });
+    // Add hero animation to master timeline
+    masterTimeline.add(animateHero());
 
     // Animate sections on scroll
-    gsap.utils.toArray('.animate-section').forEach(section => {
-        gsap.to(section, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
+    gsap.utils.toArray(".animate-section").forEach(section => {
+        gsap.from(section, {
             scrollTrigger: {
                 trigger: section,
-                start: "top 80%",
-                end: "top 50%",
-                toggleActions: "play none none reverse",
-                markers: false
-            }
+                start: "top bottom-=100",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power3.out"
         });
     });
 
-    // Animate job entries
-    gsap.utils.toArray('.animate-job').forEach((job, index) => {
-        gsap.to(job, {
-            opacity: 1,
-            x: 0,
-            duration: 0.8,
-            delay: index * 0.2,
-            ease: "power3.out",
+    // Animate job entries on scroll
+    gsap.utils.toArray(".animate-job").forEach(job => {
+        gsap.from(job, {
             scrollTrigger: {
                 trigger: job,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-                markers: false
+                start: "top bottom-=50",
+                toggleActions: "play none none reverse"
+            },
+            duration: 1.5,
+            x: -30,
+            opacity: 0,
+            ease: "power3.out"
+        });
+    });
+
+    // Add scroll progress indicator
+    gsap.to(".scroll-progress", {
+        scrollTrigger: {
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true
+        },
+        scaleX: 1,
+        transformOrigin: "left",
+        ease: "none"
+    });
+}
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", () => {
+    initAnimations();
+
+    // Add smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: target,
+                        offsetY: 70
+                    },
+                    ease: "power3.inOut"
+                });
             }
         });
     });
-};
 
-// Initialize animations on load
-initAnimations();
+    // Add hover effects to buttons
+    const buttons = document.querySelectorAll(".btn");
+    buttons.forEach(button => {
+        button.addEventListener("mouseenter", () => {
+            gsap.to(button, {
+                duration: 0.3,
+                scale: 1.05,
+                ease: "power2.out"
+            });
+        });
+
+        button.addEventListener("mouseleave", () => {
+            gsap.to(button, {
+                duration: 0.3,
+                scale: 1,
+                ease: "power2.out"
+            });
+        });
+    });
+});
 
 // Reinitialize animations on resize
 let resizeTimeout;
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(initAnimations, 250);
-});
-
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-
-        gsap.to(window, {
-            duration: window.innerWidth < 576 ? 0.8 : 1,
-            scrollTo: {
-                y: target,
-                offsetY: window.innerWidth < 576 ? 50 : 70
-            },
-            ease: 'power3.inOut'
-        });
-    });
+    resizeTimeout = setTimeout(() => {
+        initAnimations();
+    }, 250);
 });
 
 // Add floating animation to profile frame
@@ -181,40 +163,4 @@ gsap.to('.profile-frame', {
     repeat: -1,
     yoyo: true,
     ease: 'power1.inOut'
-});
-
-// Add subtle hover animations to buttons
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-        gsap.to(btn, {
-            scale: 1.05,
-            duration: window.innerWidth < 576 ? 0.2 : 0.3,
-            ease: 'power2.out'
-        });
-    });
-
-    btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, {
-            scale: 1,
-            duration: window.innerWidth < 576 ? 0.2 : 0.3,
-            ease: 'power2.out'
-        });
-    });
-});
-
-// Add scroll progress indicator
-const progressBar = document.createElement('div');
-progressBar.className = 'scroll-progress';
-document.body.appendChild(progressBar);
-
-gsap.to(progressBar, {
-    scaleX: 1,
-    transformOrigin: 'left',
-    ease: 'none',
-    scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1
-    }
 }); 

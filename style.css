@@ -1,6 +1,7 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap");
-
+@import url("https://use.typekit.net/kkv4ccp.css");
+@import url("https://use.typekit.net/xjq2ixs.css");
 :root {
   --primary-color: #e8a87c; /* Soft rose gold */
   --secondary-color: #f8e1e1; /* Light pink */
@@ -19,6 +20,7 @@ body {
   background-color: var(--background-color);
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 main {
@@ -34,7 +36,7 @@ header {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 900px;
+  min-height: 800px;
   margin-bottom: 3rem;
   background: linear-gradient(
     135deg,
@@ -64,8 +66,7 @@ header::before {
       circle at 80% 80%,
       rgba(195, 141, 158, 0.1) 0%,
       transparent 50%
-    ),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30C13.431 60 0 46.569 0 30 0 13.431 13.431 0 30 0zm0 5C16.193 5 5 16.193 5 30s11.193 25 25 25 25-11.193 25-25S43.807 5 30 5z' fill='%23e8a87c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    );
   opacity: 0.5;
 }
 
@@ -128,7 +129,7 @@ header::before {
   z-index: 1;
   background: rgba(255, 255, 255, 0.98);
   padding: 4rem;
-  margin-top: 0;
+  margin-top: 2rem;
   border-radius: 20px;
   color: var(--text-color);
   text-align: center;
@@ -139,7 +140,7 @@ header::before {
 }
 
 .overlay h1 {
-  font-family: "Playfair Display", serif;
+  font-family: "lamar-pen", sans-serif;
   font-size: 3.2rem;
   margin: 0;
   color: var(--accent-color);
@@ -223,6 +224,8 @@ h2 {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid var(--secondary-color);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .job:last-child {
@@ -271,30 +274,6 @@ h2 {
   font-size: 1.1rem;
 }
 
-/* Signature styling */
-.signature-container {
-  width: 100%;
-  max-width: 800px;
-  margin: -2rem auto 0;
-  height: 150px;
-  position: relative;
-  z-index: 2;
-}
-
-.signature {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-
-.signature-path {
-  stroke-dasharray: 3000;
-  stroke-dashoffset: 3000;
-  transform-origin: center;
-  transform: scale(0.9);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
 /* Scroll Progress Indicator */
 .scroll-progress {
   position: fixed;
@@ -334,11 +313,6 @@ h2 {
     max-width: 90%;
     padding: 3rem;
   }
-
-  .signature-container {
-    max-width: 90%;
-    height: 120px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -373,17 +347,11 @@ h2 {
   .profile-container {
     width: 350px;
     height: 350px;
-    margin: 0 auto;
-  }
-
-  .signature-container {
-    height: 100px;
-    margin: -1.5rem auto 0;
   }
 
   .overlay {
     padding: 2.5rem 2rem;
-    margin-top: 0;
+    margin-top: 2rem;
   }
 
   .overlay h1 {
@@ -440,13 +408,9 @@ h2 {
     bottom: -15px;
   }
 
-  .signature-container {
-    height: 80px;
-    margin: -1rem auto 0;
-  }
-
   .overlay {
     padding: 2rem 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .overlay h1 {
@@ -455,10 +419,6 @@ h2 {
 
   .overlay p {
     font-size: 1.1rem;
-  }
-
-  .signature-path {
-    stroke-width: 2.5;
   }
 
   section {
@@ -493,21 +453,12 @@ h2 {
     height: 240px;
   }
 
-  .signature-container {
-    height: 60px;
-    margin: -0.75rem auto 0;
-  }
-
   .overlay h1 {
     font-size: 1.8rem;
   }
 
   .overlay p {
     font-size: 1rem;
-  }
-
-  .signature-path {
-    stroke-width: 2;
   }
 
   section {
@@ -532,13 +483,9 @@ h2 {
     height: 200px;
   }
 
-  .signature-container {
-    height: 60px;
-    margin: -0.5rem auto 0;
-  }
-
   .overlay {
     padding: 1.5rem 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -547,16 +494,11 @@ h2 {
   .profile-image {
     border-width: 8px;
   }
-
-  .signature-path {
-    stroke-width: 2.5;
-  }
 }
 
 /* Print Styles */
 @media print {
   .profile-frame,
-  .signature-container,
   .button-container {
     display: none;
   }
