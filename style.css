@@ -1,85 +1,321 @@
 /* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --primary-color: #e8a87c; /* Soft rose gold */
+  --secondary-color: #f8e1e1; /* Light pink */
+  --accent-color: #c38d9e; /* Dusty rose */
+  --text-color: #4a4a4a; /* Soft black */
+  --background-color: #fff9f5; /* Warm white */
+  --section-bg: #ffffff; /* Pure white */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 /* General Styles */
 body {
-  font-family: "Open Sans", sans-serif;
-  max-width: 1280px;
-  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
   padding: 0;
-  background-color: #fdf5e6; /* Old paper color */
-  text-align: center;
 }
 
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header & Hero Section */
 header {
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 900px;
+  margin-bottom: 3rem;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--background-color) 100%
+  );
+  overflow: hidden;
+}
+
+/* Decorative elements for the background */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(232, 168, 124, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(195, 141, 158, 0.1) 0%,
+      transparent 50%
+    ),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30C13.431 60 0 46.569 0 30 0 13.431 13.431 0 30 0zm0 5C16.193 5 5 16.193 5 30s11.193 25 25 25 25-11.193 25-25S43.807 5 30 5z' fill='%23e8a87c' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.5;
 }
 
 .hero {
-  background-image: url("/assets/lorena.webp");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 2rem;
+}
+
+.profile-container {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  margin: 0 auto 4rem;
+  transform: translateY(20px);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 12px solid white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.profile-frame {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  z-index: 1;
+  animation: rotate 20s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
-  padding: 50px;
-  border-radius: 10px;
-  color: white;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 4rem;
+  margin-top: 2rem;
+  border-radius: 20px;
+  color: var(--text-color);
   text-align: center;
-  margin-top: 40rem;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .overlay h1 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
   margin: 0;
+  color: var(--accent-color);
+  letter-spacing: 1px;
 }
 
 .overlay p {
-  font-size: 1.5rem;
-  margin: 10px 0;
+  font-size: 1.4rem;
+  margin: 1rem 0 2rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--text-color);
 }
 
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Buttons */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 12px 30px;
   color: white;
-  background-color: #ff6b6b;
+  background-color: var(--primary-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   font-size: 1rem;
   text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(232, 168, 124, 0.3);
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 168, 124, 0.4);
 }
 
 .btn-secondary {
-  background-color: #4ecdc4;
+  background-color: var(--accent-color);
+  box-shadow: 0 4px 15px rgba(195, 141, 158, 0.3);
 }
 
+.btn-secondary:hover {
+  box-shadow: 0 6px 20px rgba(195, 141, 158, 0.4);
+}
+
+/* Sections */
 section {
-  padding: 20px;
-  margin: 20px auto;
-  width: 100%;
-  max-width: 1000px;
-  background-color: #f9f4e1;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  padding: 3rem;
+  margin: 2rem auto;
+  background-color: var(--section-bg);
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  max-width: 900px;
 }
 
 h2 {
-  font-size: 2rem;
-  color: #333;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-/* Responsive */
+/* Experience Section */
+#experience {
+  background-color: var(--section-bg);
+}
+
+.job {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.job:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.job h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.job ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.job li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.job li::before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+/* Contact Section */
+#contact {
+  text-align: center;
+}
+
+#contact p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+/* Signature styling */
+.signature-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  height: 150px;
+  position: relative;
+  transform: translateY(-40px);
+}
+
+.signature {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.signature-path {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  transform-origin: center;
+  transform: scale(0.9);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  transform: scaleX(0);
+  z-index: 1000;
+}
+
+/* Enhanced Animation Classes */
+.animate-section {
+  will-change: transform, opacity;
+}
+
+.animate-job {
+  will-change: transform, opacity;
+}
+
+.animate-text {
+  will-change: transform, opacity;
+}
+
+.animate-btn {
+  will-change: transform;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .overlay h1 {
     font-size: 2.5rem;
@@ -89,7 +325,32 @@ h2 {
     font-size: 1.2rem;
   }
 
+  section {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .job h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 2rem;
+  }
+
+  .overlay h1 {
+    font-size: 2rem;
+  }
+
   .btn {
-    font-size: 0.9rem;
+    display: block;
+    margin: 10px auto;
+    width: 80%;
   }
 }

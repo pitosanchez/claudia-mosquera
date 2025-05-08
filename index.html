@@ -4,139 +4,202 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script type="module" src="/main.js"></script>
     <title>Claudia Lorena Mosquera</title>
   </head>
   <body>
     <header>
       <div class="hero">
+        <div class="profile-container">
+          <div class="profile-frame"></div>
+          <img
+            src="/assets/lorena.webp"
+            alt="Claudia Lorena Mosquera"
+            class="profile-image"
+          />
+        </div>
         <div class="overlay">
-          <h1>Claudia Lorena Mosquera</h1>
-          <p>Professional Nanny & Household Manager</p>
-          <a href="#contact" class="btn">Contact Me</a>
-          <a href="#" class="btn btn-secondary">Download Resume</a>
+          <div class="signature-container">
+            <svg
+              class="signature"
+              viewBox="0 0 1000 300"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                class="signature-path"
+                d="M150,150 
+                   C180,100 200,200 220,150 
+                   C240,100 260,200 280,150 
+                   C300,100 320,200 340,150 
+                   C360,100 380,200 400,150 
+                   C420,100 440,200 460,150 
+                   C480,100 500,200 520,150 
+                   C540,100 560,200 580,150 
+                   C600,100 620,200 640,150 
+                   C660,100 680,200 700,150 
+                   C720,100 740,200 760,150 
+                   C780,100 800,200 820,150 
+                   C840,100 860,200 880,150
+                   M150,150
+                   C130,180 150,200 170,180
+                   C190,160 210,180 230,160
+                   C250,140 270,160 290,140
+                   C310,120 330,140 350,120
+                   C370,100 390,120 410,100
+                   C430,80 450,100 470,80
+                   C490,60 510,80 530,60
+                   C550,40 570,60 590,40
+                   C610,20 630,40 650,20
+                   C670,0 690,20 710,0
+                   C730,-20 750,0 770,-20
+                   C790,-40 810,-20 830,-40"
+                fill="none"
+                stroke="var(--accent-color)"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h1 class="animate-text">Claudia Lorena Mosquera</h1>
+          <p class="animate-text">Professional Nanny & Household Manager</p>
+          <div class="button-container">
+            <a href="#contact" class="btn animate-btn">Contact Me</a>
+            <a href="#" class="btn btn-secondary animate-btn"
+              >Download Resume</a
+            >
+          </div>
         </div>
       </div>
     </header>
 
-    <section id="summary">
-      <h2>Summary</h2>
-      <p>
-        Compassionate and reliable nanny with over four years of experience
-        caring for children from as young as five months to eight years old.
-        Skilled in managing household tasks, including cleaning and organizing
-        residences. Adept at creating a nurturing environment by feeding,
-        bathing, and putting children to bed, as well as preparing nutritious,
-        child-friendly meals. Strong multitasking skills and a commitment to
-        supporting children's emotional, physical, and cognitive growth.
-      </p>
-    </section>
+    <main>
+      <section id="summary" class="animate-section">
+        <h2>Summary</h2>
+        <p>
+          Compassionate and reliable nanny with over four years of experience
+          caring for children from as young as five months to eight years old.
+          Skilled in managing household tasks, including cleaning and organizing
+          residences. Adept at creating a nurturing environment by feeding,
+          bathing, and putting children to bed, as well as preparing nutritious,
+          child-friendly meals. Strong multitasking skills and a commitment to
+          supporting children's emotional, physical, and cognitive growth.
+        </p>
+      </section>
 
-    <div class 1="job">
-      <h3>Nanny - Family Rappe, Brooklyn</h3>
-      <p><strong>October 2023 – Present</strong></p>
-      <ul>
-        <li>
-          Provide full-time care for children aged 5 months to 16 months old.
-        </li>
-        <li>Manage household cleaning and organization.</li>
-        <li>
-          Bath, feed, and put children to bed, maintaining a consistent daily
-          routine.
-        </li>
-        <li>Help with household light cleaning tasks.</li>
-      </ul>
-    </div>
+      <section id="experience" class="animate-section">
+        <h2>Professional Experience</h2>
 
-    <div class 2="job">
-      <h3>Part-time Nanny - Family Goring, Brooklyn</h3>
-      <p><strong>February 2023 – October 2023</strong></p>
-      <ul>
-        <li>
-          Cared for an 8-month-old boy, ensuring all daily needs were met.
-        </li>
-        <li>
-          Created and participated in activities to promote cognitive growth
-          and development.
-        </li>
-        <li>
-          Taught basic sign language to encourage early communication skills.
-        </li>
-        <li>
-          Provided consistent support to foster emotional and physical
-          development.
-        </li>
-      </ul>
-    </div>
+        <article class="job animate-job">
+          <h3>Nanny - Family Rappe, Brooklyn</h3>
+          <p class="date"><strong>October 2023 – Present</strong></p>
+          <ul>
+            <li>
+              Provide full-time care for children aged 5 months to 16 months
+              old.
+            </li>
+            <li>Manage household cleaning and organization.</li>
+            <li>
+              Bath, feed, and put children to bed, maintaining a consistent
+              daily routine.
+            </li>
+            <li>Help with household light cleaning tasks.</li>
+          </ul>
+        </article>
 
-    <div class 3="job">
-      <h3>Babysitter - Family Grinblatt, Queens</h3>
-      <p><strong>January 2022 – February 2023</strong></p>
-      <ul>
-        <li>
-          Cared for an 8-year-old boy with special needs, ensuring his daily
-          routines were met.
-        </li>
-        <li>
-          Assisted with feeding, bedtime routines, medications, and unique
-          needs.
-        </li>
-        <li>
-          Applied communication techniques to improve cognitive and
-          communication skills.
-        </li>
-      </ul>
-    </div>
+        <article class="job animate-job">
+          <h3>Part-time Nanny - Family Goring, Brooklyn</h3>
+          <p class="date"><strong>February 2023 – October 2023</strong></p>
+          <ul>
+            <li>
+              Cared for an 8-month-old boy, ensuring all daily needs were met.
+            </li>
+            <li>
+              Created and participated in activities to promote cognitive growth
+              and development.
+            </li>
+            <li>
+              Taught basic sign language to encourage early communication
+              skills.
+            </li>
+            <li>
+              Provided consistent support to foster emotional and physical
+              development.
+            </li>
+          </ul>
+        </article>
 
-    <div class="job">
-      <h3>Live-in Nanny - Family Daza, Washington</h3>
-      <p><strong>January 2020 – December 2021</strong></p>
-      <ul>
-        <li>
-          Cared for a 4-year-old girl, focusing on her well-being and
-          development.
-        </li>
-        <li>
-          Prepared nutritious meals and snacks to promote healthy eating
-          habits.
-        </li>
-        <li>
-          Organized indoor and outdoor activities aimed at enhancing physical
-          and cognitive growth.
-        </li>
-        <li>Performed household cleaning, laundry, and meal preparation.</li>
-      </ul>
-    </div>
+        <article class="job animate-job">
+          <h3>Babysitter - Family Grinblatt, Queens</h3>
+          <p class="date"><strong>January 2022 – February 2023</strong></p>
+          <ul>
+            <li>
+              Cared for an 8-year-old boy with special needs, ensuring his daily
+              routines were met.
+            </li>
+            <li>
+              Assisted with feeding, bedtime routines, medications, and unique
+              needs.
+            </li>
+            <li>
+              Applied communication techniques to improve cognitive and
+              communication skills.
+            </li>
+          </ul>
+        </article>
 
-    <div class="job">
-      <h3>Live-in Nanny - Family Cohen, Queens</h3>
-      <p><strong>January 2019 – January 2020</strong></p>
-      <ul>
-        <li>
-          Provided dedicated care for a 5-month-old baby, ensuring feeding,
-          diaper changes, and sleep schedules were met.
-        </li>
-        <li>
-          Supported physical and cognitive development through age-appropriate
-          activities.
-        </li>
-        <li>
-          Managed household tasks like cleaning, laundry, and organizing.
-        </li>
-      </ul>
-    </div>
-  </section>
+        <article class="job animate-job">
+          <h3>Live-in Nanny - Family Daza, Washington</h3>
+          <p class="date"><strong>January 2020 – December 2021</strong></p>
+          <ul>
+            <li>
+              Cared for a 4-year-old girl, focusing on her well-being and
+              development.
+            </li>
+            <li>
+              Prepared nutritious meals and snacks to promote healthy eating
+              habits.
+            </li>
+            <li>
+              Organized indoor and outdoor activities aimed at enhancing
+              physical and cognitive growth.
+            </li>
+            <li>
+              Performed household cleaning, laundry, and meal preparation.
+            </li>
+          </ul>
+        </article>
 
+        <article class="job animate-job">
+          <h3>Live-in Nanny - Family Cohen, Queens</h3>
+          <p class="date"><strong>January 2019 – January 2020</strong></p>
+          <ul>
+            <li>
+              Provided dedicated care for a 5-month-old baby, ensuring feeding,
+              diaper changes, and sleep schedules were met.
+            </li>
+            <li>
+              Supported physical and cognitive development through
+              age-appropriate activities.
+            </li>
+            <li>
+              Managed household tasks like cleaning, laundry, and organizing.
+            </li>
+          </ul>
+        </article>
+      </section>
 
-
-    <!-- Additional Sections Here (Experience, Education, etc.) -->
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Phone: 813-842-9763</p>
-      <p>Email: lorem1089@gmail.com</p>
-      <p>Location: Bronx, NY 10462</p>
-    </section>
+      <section id="contact" class="animate-section">
+        <h2>Contact</h2>
+        <p>Phone: 813-842-9763</p>
+        <p>Email: lorem1089@gmail.com</p>
+        <p>Location: Bronx, NY 10462</p>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>

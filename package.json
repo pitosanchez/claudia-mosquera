@@ -12,6 +12,19 @@
     "vite": "^5.4.1"
   },
   "dependencies": {
-    "gsap": "npm:@gsap/shockingly@^3.12.5"
-  }
+    "gsap": "^3.12.5"
+  },
+  "description": "",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PitoSanchez/claudia-mosquera.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PitoSanchez/claudia-mosquera/issues"
+  },
+  "homepage": "https://github.com/PitoSanchez/claudia-mosquera#readme"
 }
