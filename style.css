@@ -2,6 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap");
 @import url("https://use.typekit.net/kkv4ccp.css");
 @import url("https://use.typekit.net/xjq2ixs.css");
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :root {
   --primary-color: #e8a87c; /* Soft rose gold */
   --secondary-color: #f8e1e1; /* Light pink */
@@ -21,6 +34,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 main {
@@ -29,6 +44,7 @@ main {
   padding: 2rem;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 /* Header & Hero Section */
@@ -43,7 +59,7 @@ header {
     var(--secondary-color) 0%,
     var(--background-color) 100%
   );
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,7 +95,9 @@ header::before {
   position: relative;
   padding: 2rem;
   width: 100%;
+  max-width: 100%;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .profile-container {
@@ -134,9 +152,11 @@ header::before {
   color: var(--text-color);
   text-align: center;
   max-width: 700px;
+  width: 90%;
   margin: 0 auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
 }
 
 .overlay h1 {
@@ -249,12 +269,16 @@ h2 {
 .job ul {
   list-style-type: none;
   padding-left: 0;
+  width: 100%;
 }
 
 .job li {
   margin-bottom: 0.8rem;
   position: relative;
   padding-left: 1.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .job li::before {
@@ -333,6 +357,8 @@ h2 {
 @media (max-width: 768px) {
   main {
     padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   header {
@@ -385,6 +411,8 @@ h2 {
 @media (max-width: 576px) {
   main {
     padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   header {
@@ -411,6 +439,8 @@ h2 {
   .overlay {
     padding: 2rem 1.5rem;
     margin-top: 1.5rem;
+    width: 95%;
+    box-sizing: border-box;
   }
 
   .overlay h1 {
@@ -424,6 +454,8 @@ h2 {
   section {
     padding: 1.5rem;
     margin: 1rem auto;
+    width: 95%;
+    box-sizing: border-box;
   }
 
   h2 {
@@ -442,6 +474,8 @@ h2 {
 @media (max-width: 400px) {
   main {
     padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   header {
@@ -464,6 +498,8 @@ h2 {
   section {
     padding: 1.5rem 1rem;
     margin: 1rem auto;
+    width: 95%;
+    box-sizing: border-box;
   }
 }
 
